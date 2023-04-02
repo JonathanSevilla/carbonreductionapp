@@ -10,6 +10,10 @@ python -m venv env
 ```
 pip install -r requirements.txt
 ```
+### Ejecuta el siguiente comando, para acceder al entorno virtual:
+```
+env\scripts\activate
+```
 ### Muevete a la carpeta de el projecto. Y ejecuta los siguientes comando:
 ```
 python manage.py makemigrations
