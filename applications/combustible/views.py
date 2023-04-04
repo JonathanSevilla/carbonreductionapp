@@ -1,5 +1,6 @@
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework import viewsets
 from django.db.models import Sum
 from rest_framework.decorators import api_view
 from .models import (
@@ -12,6 +13,10 @@ from .serializers import (
     CategoriaConsumoCombustibleSerializers,
     ConsumoCombustibleSerializers
 )
+
+class CombustibleViewset(viewsets.ViewSet):
+    serializer_class = ConsumoCombustibleSerializers
+    queryset = ConsumoCombustible.objects.all() 
 
 
 # Create your views here.
