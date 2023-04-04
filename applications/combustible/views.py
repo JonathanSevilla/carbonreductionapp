@@ -111,3 +111,52 @@ def segmento_mayor_impacta(request):
     valor = max(consumo_categoria.values())
 
     return Response({max_segmento: valor})
+
+
+@api_view(['GET'])
+def mayor_menor_uso_combustible(request): 
+    meses = {
+        1:"Enero",
+        2:"Febrero",
+        3:"Marzo",
+        4:"Abril",
+        5:"Mayo",
+        6:"Junio",
+        7:"Julio",
+        8:"Agosto",
+        9:"Septiembre",
+        10:"Octubre",
+        11:"Noviembre",
+        12:"Diciembre"
+    }
+    
+    combustible = {}
+    combustible_max_min = {}
+    list_combustible = []
+
+    for i in range(1,13 ):  
+        mensual_combustible = ConsumoCombustible.objects.filter(fecha_registro__month=i) \
+            .aggregate(Sum('cantidad'))
+            
+        resultado_combustible = mensual_combustible['cantidad__sum']
+
+        igual_none = 0          
+
+        if resultado_combustible == None:               
+            total_consumo = igual_none            
+        
+        else:
+            total_consumo = resultado_combustible
+            list_combustible.append(mensual_combustible['cantidad__sum'])
+        
+        combustible[meses[i]] = total_consumo
+
+    value_min = min(list_combustible)
+    value_max = max(list_combustible)
+    
+    key_min = list(combustible.keys())[list(combustible.values()).index(value_min)]
+    key_max = list(combustible.keys())[list(combustible.values()).index(value_max)]
+    combustible_max_min["Menor perdida de combustible en el mes de "+key_min] = value_min
+    combustible_max_min["Meyor perdida de combustible en el mes de "+key_max] = value_max
+    
+    return Response(combustible_max_min)

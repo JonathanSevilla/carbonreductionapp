@@ -20,3 +20,34 @@ class ConsumoDerivadosPetroleo(models.Model):
 
     def __str__(self):
         return self.id_categoria_consumo_derivados.nombre + " " + self.id_tipo_emision.nombre
+    
+class TipoAceite(models.Model):
+    nombre = models.CharField("nombre", max_length=200)
+
+    def __str__(self):
+        return str(self.nombre)
+        
+
+class Aceite(models.Model):
+    fecha_registro = models.DateField(auto_now_add=True)
+    cantidad_galones = models.FloatField(default=0)
+    id_tipo_aceite = models.ForeignKey(TipoAceite, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cantidad_galones)
+    
+
+class TipoRefrigerante(models.Model):
+    nombre = models.CharField("nombre", max_length=200)
+
+    def __str__(self):
+        return str(self.nombre)
+        
+
+class Refrigerante(models.Model):
+    fecha_registro = models.DateField(auto_now_add=True)
+    cantidad_galones = models.FloatField(default=0)
+    id_tipo_refrigerante = models.ForeignKey(TipoRefrigerante, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cantidad_galones)
