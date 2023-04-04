@@ -18,6 +18,25 @@ class CombustibleViewset(viewsets.ViewSet):
     serializer_class = ConsumoCombustibleSerializers
     queryset = ConsumoCombustible.objects.all() 
 
+@api_view(['PUT', 'DELETE'])
+def combustible(request, pk):
+    try:
+        combustible = ConsumoCombustible.objects.get(pk=pk)
+    except ConsumoCombustible.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializer = ConsumoCombustibleSerializers(combustible, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({})
+
+    # elif request.method == 'DELETE':
+    #     combustible.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 # Create your views here.
 @api_view(['POST'])

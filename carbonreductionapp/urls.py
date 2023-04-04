@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
-from django.conf.urls.static import static
+from rest_framework import routers
 from django.views.generic import TemplateView
+from applications.combustible import views
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('api/v1/', include('applications.derivadospetroleo.urls')),
     path('api/v1/', include('applications.energiaelectrica.urls')),    
     path('api/v1/', include('applications.viajes.urls')),
+    
 ]
