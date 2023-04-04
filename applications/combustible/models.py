@@ -20,7 +20,7 @@ class ConsumoCombustible(models.Model):
         CategoriaConsumoCombustible,
         on_delete=models.CASCADE
     )
-    fecha_registro = models.DateField(auto_now_add=True, null=True)
+    fecha_registro = models.DateField()
     cantidad = models.FloatField()
     id_tipo_emision = models.ForeignKey(
         TipoEmision,

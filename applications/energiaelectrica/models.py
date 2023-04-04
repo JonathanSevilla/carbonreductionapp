@@ -15,7 +15,7 @@ class ConsumoEnergiaElectirca(models.Model):
         on_delete=models.CASCADE
     )
     cantidad = models.FloatField()
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     id_tipo_emision = models.ForeignKey(
         TipoEmision,
         on_delete=models.CASCADE

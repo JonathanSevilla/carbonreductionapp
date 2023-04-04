@@ -14,7 +14,7 @@ class ConsumoDerivadosPetroleo(models.Model):
         CategoriaConsumoDerivadosPetroleo,
         on_delete=models.CASCADE
     )
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     cantidad = models.FloatField()
     id_tipo_emision = models.ForeignKey(TipoEmision, on_delete=models.CASCADE)
 
@@ -29,7 +29,7 @@ class TipoAceite(models.Model):
         
 
 class Aceite(models.Model):
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     cantidad_galones = models.FloatField(default=0)
     id_tipo_aceite = models.ForeignKey(TipoAceite, on_delete=models.CASCADE)
 
@@ -45,7 +45,7 @@ class TipoRefrigerante(models.Model):
         
 
 class Refrigerante(models.Model):
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     cantidad_galones = models.FloatField(default=0)
     id_tipo_refrigerante = models.ForeignKey(TipoRefrigerante, on_delete=models.CASCADE)
 

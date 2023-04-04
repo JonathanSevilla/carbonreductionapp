@@ -20,7 +20,6 @@ class CategoriaConsumoCombustibleSerializers(serializers.ModelSerializer):
 
 
 class ConsumoCombustibleSerializers(serializers.ModelSerializer):
-    fecha_registro = serializers.DateField(read_only=True)
     
     class Meta:
         model = ConsumoCombustible

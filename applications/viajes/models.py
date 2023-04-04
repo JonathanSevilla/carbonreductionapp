@@ -10,7 +10,7 @@ class EquiposViaje(models.Model):
     
 
 class Viajes(models.Model):
-    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_registro = models.DateField()
     id_equipos_viaje = models.ForeignKey(EquiposViaje, on_delete=models.CASCADE)
     cantidad = models.FloatField()
     id_tipo_emision = models.ForeignKey(TipoEmision, on_delete=models.CASCADE)

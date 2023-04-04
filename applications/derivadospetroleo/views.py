@@ -80,7 +80,6 @@ def aceites_mensual(request):
         
         else:
             total_consumo = resultado_aceite
-            # valor_aceite = procentaje(total_consumo,resultado_aceite)
 
         dict_aceite["Consumo en galones de aceite " + meses[i]] = total_consumo
 
@@ -115,8 +114,7 @@ def menos_perdidas_refrigerante(request):
         11:"Noviembre",
         12:"Diciembre"
     }
-    aceites = {}
-    dict_aceite = {}
+
     refrigerante = {}
     refrigerante_min = {}
     list_refrigerante = []
@@ -126,10 +124,6 @@ def menos_perdidas_refrigerante(request):
             .aggregate(Sum('cantidad_galones'))
             
         resultado_refrigerante = mensual_refrigerante['cantidad_galones__sum']
-        # sub_list= []
-
-        # if resultado_refrigerante != None:
-        #     valor_aceite = min(resultado_refrigerante.values())
 
         igual_none = 0          
 
